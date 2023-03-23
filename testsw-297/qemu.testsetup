@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ASCII'?>
+<TestSetup>
+	<Timeout factor="1.1" extra="500" />
+	<Monitors>
+		<Monitor name="UART0" address="0x10013000" />
+	</Monitors>
+	<Stimulators>
+		<!-- <Stimulator name="exampleTestInput0" address="0x10036000" file="./print_stimulus.stim" /> -->
+	</Stimulators>
+</TestSetup>

@@ -1,0 +1,54 @@
+settings:
+  basedir: /!THIS!/
+  gcc:
+    march: rv32imac
+    mabi: ilp32
+  qemu:
+    machine: sifive_e
+    cpu: rv32,g=false,a=true,m=true,c=true,f=false,d=false,s=false,u=false,mmu=false,pmp=true,h=false
+    testsetup: ./qemu.testsetup
+    terminator: 0x80000000
+  makedir: ../../tools/fe300-swgen
+
+hardware:
+  name: fe300
+  core:
+    subsets:
+      - I
+      - M
+      - A
+      - C
+      - Zicsr
+      - Zifencei
+    privileged:
+      - M-mode
+      - PMP
+  soc: FE300
+  cell_layout_analysis: null
+  max_faults_gpr: 1
+  max_faults_csr: 1
+  max_faults_imem: 1
+  max_faults_dmem: 1
+  max_faults_ifr: 0
+
+software:
+  - name: test-sw
+    type: import
+    files:
+      - ./elf/
+
+mutants:
+  gpr: True
+  csr: True
+  ifr: False
+  imem: True
+  dmem: True
+  with_flip: False
+  with_stuckat: True
+  with_transient_faults: False
+
+steps:
+  init-database: True
+  goldenrun-analysis: True
+  create-mutants: True
+  simulate-mutants: True
