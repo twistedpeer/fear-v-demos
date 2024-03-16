@@ -1,7 +1,7 @@
 settings:
   basedir: /!THIS!/
   gcc:
-    march: rv32imac
+    march: rv32imac_zicsr_zifencei
     mabi: ilp32
   qemu:
     machine: sifive_e
